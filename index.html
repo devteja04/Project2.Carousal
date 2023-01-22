@@ -4,44 +4,76 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project 2 | Carousal</title>
     <link rel="stylesheet" href="./styles.css">
+    <title>Project 2 | Carousal</title>
 </head>
 <body>
     
     <div class="carousalHead">
-        <h1>Slider</h1>
-        <div class="subHead">
-            <div class="line"></div>
-            <span>Smooth Slide Images</span>
-        </div>
+        <h1>Image Carousal</h1>
     </div>
 
-    <div class="carousalMain">
+    <div class="carousalBody">
 
-        <div class="carousalInner">
-            <div class="image image1">
-                <span>1/4</span>
-                <img src="./Assets/Img1.jpg" alt="img1">
-            </div>
-            <div class="image image2">
-                <span>2/4</span>
-                <img src="./Assets/Img2.jpg" alt="img2">
-            </div>
-            <div class="image image3">
-                <span>3/4</span>
-                <img src="./Assets/Img3.jpg" alt="img3">
-            </div>
-            <div class="image image4">
-                <span>4/4</span>
-                <img src="./Assets/Img4.jpg" alt="img4">
-            </div>
+        <div class="carousalBlob">
+            <svg xmlns="http://www.w3.org/2000/svg" width="50%" height="50%" viewBox="-5 -5 250 250" class="rotate"> 
+            <defs>
+                <linearGradient id="lgrad" x1="100%" y1="0%" x2="0%" y2="100%" >
+                <stop offset="0%" class="stop1" />
+                <stop offset="100%" class="stop2" />
+                </linearGradient>
+            </defs>
+            <path d="M199.7842768072848 93.43508552628745 C198.1028692535961 80.5503082243275 190.4200853068714 54.91455615203649 183.01090052414034 44.23988527476583 C174.7653160430861 32.36018418657948 151.74812484071737 12.788183958150068 138.24851394574475 7.603835680575088 C122.46103605082752 1.5408621275930292 86.1656262520741 -2.397001517475239 70.67801549748164 4.39549579212246 C45.719130253338115 15.341868577294111 6.3667007819133135 61.34168126385353 0.7220642735484972 88.00452260664194 C-3.3079646162061174 107.04065021825124 9.650606894023996 147.93986823379305 22.192225874698167 162.81679939049752 C35.98290437588815 179.17537119710323 77.9844052712345 197.90451719307205 99.27772727345278 199.99739157652306 C112.10318636436489 201.25797810147074 137.79343983095825 193.10698850028723 149.17974283243416 187.07096470658655 C158.2710271041726 182.25155948151948 173.9711204636144 168.1641249407871 180.08440357585783 159.8872966821773 C186.54181984583354 151.14454348726952 195.28266254800351 130.78445735408962 197.92971980272054 120.24277597960922 C199.56582840048242 113.72711202828405 200.65356854890388 100.09654632240579 199.7842768072848 93.43508552628745Z" stroke="none" fill="url(#lgrad)"/>
+            </svg>
+        </div>
+
+        <div class="carousalImage">
+            <span id="imgNum">1/4</span>
+            <img src="./Assets/Img1.jpg" alt="img">
+        </div>
+
+        <div class="carousalLocation">
+            <span class="imgSel img1Sel"></span>
+            <span class="imgSel img2Sel"></span>
+            <span class="imgSel img3Sel"></span>
+            <span class="imgSel img4Sel"></span>
         </div>
 
     </div>
 
     <!-- Script Starts -->
     <script>
+        
+        let imgNum = document.getElementById('imgNum');
+        let img = document.querySelector('.carousalImage img');
+        let imgSel = document.querySelector(`.img1Sel`);
+        imgSel.classList.add('active');
+
+        let initialImageNo = 1;
+        
+        const changeImage = (num) => {
+            imgSel.classList.remove('active');
+            if (num >= 1 && num <= 4) {
+                imgSel = document.querySelector(`.img${num}Sel`);
+                imgSel.classList.add('active');
+                img.src = `./Assets/Img${num}.jpg`;
+                imgNum.innerHTML = `${num}/4`;
+            }
+            else {
+                console.warn('Out of Range Image!!');
+            }
+        }
+
+        setInterval(()=>{
+
+            if (initialImageNo > 4) {
+                initialImageNo = 1;
+            }
+
+            changeImage(initialImageNo);
+            initialImageNo++;
+
+        },6000)
 
     </script>
     <!-- Script Ends -->
