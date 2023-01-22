@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 
 :root {
-
     /* Font */
     --mainfont : 'Nunito', sans-serif;
     
@@ -11,7 +10,6 @@
     --mainclr : #FF0F7B;
     --priclr : #F89B29;
     --gradient : linear-gradient(to right,#FF0F7B,#F89B29);
-
 }
 
 *{
@@ -20,44 +18,149 @@
     box-sizing: border-box;
 }
 
+::-webkit-scrollbar {
+    width: 0;
+}
+
+body {
+    background-color: var(--black);
+}
+
 .carousalHead {
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
-    padding: 1rem 2rem;
+    padding: 0.5rem 2rem;
 }
 
 .carousalHead h1 {
     font-family: var(--mainfont);
     font-size: 48px;
     font-weight: 600;
-    color: var(--mainclr);
+    color: var(--priclr);
+    text-align: center;
+    cursor: default;
+    -webkit-user-select : none;
+    user-select: none;
 }
 
-.carousalHead .subHead {
+.carousalBody {
+    position: relative;
+    width: 90%;
+    height: 100%;
+    margin: 0.5rem auto;
+}
+
+.carousalImage {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.carousalImage img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    object-position: top center;
+}
+
+.carousalImage span {
+    position: absolute;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    font-family: var(--mainfont);
+    font-size: 24px;
+    color: var(--white);
+}
+
+.carousalLocation {
+    margin: 0.4rem auto;
+    position: absolute;
+    bottom: 1rem;
     width: 100%;
     display: flex;
-    flex-direction: row;
     align-items: center;
-    justify-content: flex-start;
-    column-gap: 0.6rem;
-    padding: 0 0.6rem;
+    justify-content: center;
+    column-gap: 1rem;
 }
 
-.carousalHead .subHead .line {
-    width: 6px;
-    height: 36px;
-    border-radius: 2px;
-    background-color: var(--priclr);
+.carousalLocation span {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: white;
+    border: 1px solid var(--black);
 }
 
-.carousalHead .subHead span{
-    font-family: var(--mainfont);
-    font-size: 16px;
-    color: var(--black);
-    font-size: 800;
+.carousalLocation span.active {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: var(--black);
+    transform: scale(0.95);
+    transition: all 0.4s ease-in-out;
 }
 
+@media only screen and (max-width : 800px) {
+    .carousalBody {
+        position: relative;
+        width: 98%;
+        height: 100%;
+        margin: 0.5rem auto;
+    }
+}
+
+@media only screen and (max-width : 800px) {
+    .carousalHead h1 {
+        font-size: 32px;
+    }
+
+    .carousalImage img {
+        object-fit: cover;
+    }
+}
+
+@media only screen and (max-width : 600px) {
+    .carousalHead h1 {
+        font-size: 24px;
+    }
+
+    .carousalImage img {
+        object-fit: fill;
+    }
+}
+
+.carousalBlob {
+    position: absolute;
+    z-index: -1;
+    top: -2rem;
+    left: 0%;
+}
+
+.rotate {  
+    animation-name: ani-rotate;
+    animation-duration: 30s;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-fill-mode: none;
+}
+
+.stop1 {
+    stop-color: #ff0f7b;
+    stop-opacity: 1.00;
+}
+
+.stop2 {
+    stop-color: #f89b29;
+    stop-opacity: 1.00;
+}
+ 
+@keyframes ani-rotate {
+    0%{ transform: rotate(0); }
+    100%{ transform: rotate(360deg); }  
+}
