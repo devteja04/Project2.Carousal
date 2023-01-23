@@ -26,32 +26,11 @@ body {
     background-color: var(--black);
 }
 
-.carousalHead {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 0.5rem 2rem;
-}
-
-.carousalHead h1 {
-    font-family: var(--mainfont);
-    font-size: 48px;
-    font-weight: 600;
-    color: var(--priclr);
-    text-align: center;
-    cursor: default;
-    -webkit-user-select : none;
-    user-select: none;
-}
-
 .carousalBody {
     position: relative;
-    width: 90%;
-    height: 100%;
-    margin: 0.5rem auto;
+    width: 95%;
+    height: 100vh;
+    margin: 0rem auto;
 }
 
 .carousalImage {
@@ -62,8 +41,8 @@ body {
 
 .carousalImage img {
     width: 100%;
-    height: 500px;
-    object-fit: cover;
+    height: 100%;
+    object-fit: contain;
     object-position: top center;
 }
 
@@ -107,60 +86,8 @@ body {
 @media only screen and (max-width : 800px) {
     .carousalBody {
         position: relative;
-        width: 98%;
+        width: 97%;
         height: 100%;
         margin: 0.5rem auto;
     }
-}
-
-@media only screen and (max-width : 800px) {
-    .carousalHead h1 {
-        font-size: 32px;
-    }
-
-    .carousalImage img {
-        object-fit: cover;
-    }
-}
-
-@media only screen and (max-width : 600px) {
-    .carousalHead h1 {
-        font-size: 24px;
-    }
-
-    .carousalImage img {
-        object-fit: fill;
-    }
-}
-
-.carousalBlob {
-    position: absolute;
-    z-index: -1;
-    top: -2rem;
-    left: 0%;
-}
-
-.rotate {  
-    animation-name: ani-rotate;
-    animation-duration: 30s;
-    animation-timing-function: linear;
-    animation-delay: 0s;
-    animation-iteration-count: infinite;
-    animation-direction: normal;
-    animation-fill-mode: none;
-}
-
-.stop1 {
-    stop-color: #ff0f7b;
-    stop-opacity: 1.00;
-}
-
-.stop2 {
-    stop-color: #f89b29;
-    stop-opacity: 1.00;
-}
- 
-@keyframes ani-rotate {
-    0%{ transform: rotate(0); }
-    100%{ transform: rotate(360deg); }  
 }
