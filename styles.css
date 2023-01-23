@@ -25,14 +25,13 @@
 body {
     background-color: var(--black);
     width : 100%;
-    height : 100%;
+    height : 100vh;
 }
 
 .carousalBody {
     position: relative;
-    width: 95%;
-    height: 100vh;
-    margin: 0rem auto;
+    width: 100%;
+    height: 100%;
 }
 
 .carousalImage {
@@ -83,13 +82,4 @@ body {
     background-color: var(--black);
     transform: scale(0.95);
     transition: all 0.4s ease-in-out;
-}
-
-@media only screen and (max-width : 800px) {
-    .carousalBody {
-        position: relative;
-        width: 97%;
-        height: 100%;
-        margin: 0.5rem auto;
-    }
 }
